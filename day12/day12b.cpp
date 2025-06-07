@@ -93,11 +93,5 @@ int main()
             mat.resize(index + 1);
         mat[index].push_back(c);
     }
-    // print(mat);
-    // rotate(mat);
-    // cout << '\n';
-    // print(mat);
-    // return 0;
-    //
     cout << findPrice(mat) << '\n';
 }
