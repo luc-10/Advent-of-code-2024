@@ -3,15 +3,9 @@
 #include <fstream>
 #include <unordered_map>
 
-using std::cout;
-using std::ifstream;
-using std::pair;
-using std::unordered_map;
-using std::vector;
-
-int plotAntinodes(vector<vector<char>> &mat)
+int plotAntinodes(std::vector<std::vector<char>> &mat)
 {
-    unordered_map<char, vector<pair<int, int>>> m;
+    std::unordered_map<char, std::vector<std::pair<int, int>>> m;
     for (int i = 0; i < mat.size(); i++)
     {
         for (int j = 0; j < mat.size(); j++)
@@ -22,16 +16,16 @@ int plotAntinodes(vector<vector<char>> &mat)
             }
         }
     }
-    vector<vector<char>> antinodes(mat.size(), vector<char>(mat[0].size(), '.'));
+    std::vector<std::vector<char>> antinodes(mat.size(), std::vector<char>(mat[0].size(), '.'));
     for (const auto &p : m)
     {
-        vector<pair<int, int>> antennas = p.second;
+        std::vector<std::pair<int, int>> antennas = p.second;
         for (int i = 0; i < antennas.size(); i++)
         {
             for (int j = i + 1; j < antennas.size(); j++)
             {
 
-                pair<int, int> dist = {antennas[i].first - antennas[j].first, antennas[i].second - antennas[j].second};
+                std::pair<int, int> dist = {antennas[i].first - antennas[j].first, antennas[i].second - antennas[j].second};
 
                 if (antennas[i].first + dist.first >= 0 && antennas[i].first + dist.first < antinodes.size() && antennas[i].second + dist.second >= 0 && antennas[i].second + dist.second < antinodes[i].size())
                 {
@@ -53,19 +47,17 @@ int plotAntinodes(vector<vector<char>> &mat)
     {
         for (int j = 0; j < antinodes[i].size(); j++)
         {
-            cout << antinodes[i][j];
             if (antinodes[i][j] == '#')
                 ret++;
         }
-        cout << '\n';
     }
     return ret;
 }
 
 int main()
 {
-    ifstream file("input.txt");
-    vector<vector<char>> mat(0, vector<char>(0));
+    std::ifstream file("input.txt");
+    std::vector<std::vector<char>> mat(0, std::vector<char>(0));
     char c;
     int index = 0;
     while (file.get(c))
@@ -81,5 +73,5 @@ int main()
         }
         mat[index].push_back(c);
     }
-    cout << plotAntinodes(mat) << '\n';
+    std::cout << plotAntinodes(mat) << '\n';
 }

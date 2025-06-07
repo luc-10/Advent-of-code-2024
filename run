@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+  echo "Use: run <programName> (es: day1a)"
+  exit 1
+fi
+
+prog="$1"
+day="${prog//[!0-9]/}"
+src="day${day}/${prog}.cpp"
+
+if [ ! -f "$src" ]; then
+  echo "File not found: $src"
+  exit 1
+fi
+
+g++ "$src" -o "/tmp/$prog.out"
+if [ $? -ne 0 ]; then
+  echo "Compilation error"
+  exit 1
+fi
+
+cd "day${day}" || {
+  echo "Folder not found: ${day}"
+  exit 1
+}
+
+echo "Running $prog"
+"/tmp/$prog.out"

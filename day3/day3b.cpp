@@ -1,32 +1,28 @@
 #include <fstream>
 #include <iostream>
 
-using std::cout;
-using std::ifstream;
-
 int n1, n2, tot;
 
 char getNextChar(char c);
-void fsmOnNum(ifstream &file, int num, int size, bool num1);
-void fsmOnChar(ifstream &file, char ch);
-void fsmOnNothing(ifstream &file);
-void fsmOnDont(ifstream &file, char ch);
+void fsmOnNum(std::ifstream &file, int num, int size, bool num1);
+void fsmOnChar(std::ifstream &file, char ch);
+void fsmOnNothing(std::ifstream &file);
+void fsmOnDont(std::ifstream &file, char ch);
 
 int main()
 {
-    ifstream file("input.txt");
+    std::ifstream file("input.txt");
     fsmOnNothing(file);
-    cout << tot << '\n';
+    std::cout << tot << '\n';
 }
 
-void fsmOnDont(ifstream &file, char ch)
+void fsmOnDont(std::ifstream &file, char ch)
 {
     char c;
     if (!file.get(c))
     {
         return;
     }
-    cout << "On dont " << (int)ch << '\n';
     if (ch == 0 && c == 'd')
     {
         fsmOnDont(file, 1);
@@ -86,9 +82,8 @@ char getNextChar(char c)
     return 0;
 }
 
-void fsmOnNum(ifstream &file, int num, int size, bool num1)
+void fsmOnNum(std::ifstream &file, int num, int size, bool num1)
 {
-    cout << "Now on " << num << '\n';
     char c;
     if (!file.get(c))
     {
@@ -116,7 +111,6 @@ void fsmOnNum(ifstream &file, int num, int size, bool num1)
         {
             n2 = num;
             tot += n1 * n2;
-            cout << "adding " << n1 << ' ' << n2 << '\n';
             fsmOnNothing(file);
         }
     }
@@ -136,10 +130,9 @@ void fsmOnNum(ifstream &file, int num, int size, bool num1)
     }
 }
 
-void fsmOnChar(ifstream &file, char ch)
+void fsmOnChar(std::ifstream &file, char ch)
 {
 
-    cout << "now on " << ch << '\n';
     char c;
     if (ch == '0')
     {
@@ -157,7 +150,6 @@ void fsmOnChar(ifstream &file, char ch)
     {
         if (c == '(')
         {
-            cout << "(\n";
             fsmOnChar(file, 2);
         }
         else
@@ -169,7 +161,6 @@ void fsmOnChar(ifstream &file, char ch)
     {
         if (c == ')')
         {
-            cout << ")\n";
             fsmOnDont(file, 0);
         }
         else
@@ -183,9 +174,8 @@ void fsmOnChar(ifstream &file, char ch)
     }
 }
 
-void fsmOnNothing(ifstream &file)
+void fsmOnNothing(std::ifstream &file)
 {
-    cout << "Now on nothing\n";
     char c;
     if (!file.get(c))
     {

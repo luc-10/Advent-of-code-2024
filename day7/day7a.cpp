@@ -3,13 +3,7 @@
 #include <sstream>
 #include <fstream>
 
-using std::cout;
-using std::ifstream;
-using std::string;
-using std::stringstream;
-using std::vector;
-
-bool checkRecursive(vector<long long> &nums, int index, long long tot)
+bool checkRecursive(std::vector<long long> &nums, int index, long long tot)
 {
     if (tot > nums[0])
         return false;
@@ -21,39 +15,36 @@ bool checkRecursive(vector<long long> &nums, int index, long long tot)
     }
 }
 
-bool checkLine(vector<long long> &nums)
+bool checkLine(std::vector<long long> &nums)
 {
     return checkRecursive(nums, 2, (long long)nums[1]);
 }
 
 int main()
 {
-    ifstream file("input.txt");
+    std::ifstream file("input.txt");
 
     long long sum = 0;
-    string line;
-    while (getline(file, line))
+    std::string line;
+    while (std::getline(file, line))
     {
-        stringstream ss(line);
+        std::stringstream ss(line);
         long long num;
         char sep;
 
         ss >> num >> sep;
 
-        vector<long long> nums;
+        std::vector<long long> nums;
         nums.push_back(num);
-        cout << num << ' ';
         while (ss >> num)
         {
-            cout << num << ' ';
             nums.push_back(num);
         }
-        cout << '\n';
         if (checkLine(nums))
         {
             sum += nums[0];
         }
     }
-    cout << sum << '\n';
+    std::cout << sum << '\n';
     return 0;
 }

@@ -5,13 +5,7 @@
 #include <sstream>
 #include <algorithm>
 
-using std::cout;
-using std::ifstream;
-using std::istringstream;
-using std::string;
-using std::vector;
-
-bool test1(vector<int> &arr)
+bool test1(std::vector<int> &arr)
 {
     int inc = 0, dec = 0, same = 0;
     for (int i = 0; i < arr.size() - 1; i++)
@@ -34,7 +28,7 @@ bool test1(vector<int> &arr)
     return 1;
 }
 
-bool test2(vector<int> &arr)
+bool test2(std::vector<int> &arr)
 {
     int last = 0, errors = 0;
     for (int i = 1; i < arr.size(); i++)
@@ -58,7 +52,7 @@ bool test2(vector<int> &arr)
     return 1;
 }
 
-bool isSafeWithoutIndex(vector<int> &arr, int index)
+bool isSafeWithoutIndex(std::vector<int> &arr, int index)
 {
     int upperLimit = (index == arr.size() - 1) ? arr.size() - 2 : arr.size() - 1;
     for (int i = 0; i < upperLimit; i++)
@@ -84,7 +78,7 @@ bool isSafeWithoutIndex(vector<int> &arr, int index)
     return 1;
 }
 
-bool isSafe(vector<int> &arr)
+bool isSafe(std::vector<int> &arr)
 {
     if (!test1(arr))
         return 0;
@@ -119,14 +113,14 @@ bool isSafe(vector<int> &arr)
 
 int main()
 {
-    ifstream file("input.txt");
+    std::ifstream file("input.txt");
 
-    string line;
+    std::string line;
     int safes = 0;
     while (getline(file, line))
     {
-        istringstream iss(line);
-        vector<int> report;
+        std::istringstream iss(line);
+        std::vector<int> report;
         int num;
 
         while (iss >> num)
@@ -136,6 +130,6 @@ int main()
         if (isSafe(report))
             safes++;
     }
-    cout << safes << '\n';
+    std::cout << safes << '\n';
     return 0;
 }

@@ -5,13 +5,7 @@
 #include <sstream>
 #include <algorithm>
 
-using std::cout;
-using std::ifstream;
-using std::istringstream;
-using std::string;
-using std::vector;
-
-bool isSafe(vector<int> &arr)
+bool isSafe(std::vector<int> &arr)
 {
     if (arr.size() <= 1)
         return 1;
@@ -28,14 +22,14 @@ bool isSafe(vector<int> &arr)
 
 int main()
 {
-    ifstream file("input.txt");
+    std::ifstream file("input.txt");
 
-    string line;
+    std::string line;
     int safes = 0;
     while (getline(file, line))
     {
-        istringstream iss(line);
-        vector<int> report;
+        std::istringstream iss(line);
+        std::vector<int> report;
         int num;
 
         while (iss >> num)
@@ -45,6 +39,6 @@ int main()
         if (isSafe(report))
             safes++;
     }
-    cout << safes << '\n';
+    std::cout << safes << '\n';
     return 0;
 }

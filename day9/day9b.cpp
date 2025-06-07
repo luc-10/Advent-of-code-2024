@@ -3,14 +3,7 @@
 #include <fstream>
 #include <unordered_map>
 
-using std::cout;
-using std::ifstream;
-using std::pair;
-using std::swap;
-using std::unordered_map;
-using std::vector;
-
-int getMax(vector<int> &arr)
+int getMax(std::vector<int> &arr)
 {
     for (int i = arr.size() - 1; i >= 0; i--)
     {
@@ -19,7 +12,7 @@ int getMax(vector<int> &arr)
     }
     return 0;
 }
-void fix(vector<int> &disk)
+void fix(std::vector<int> &disk)
 {
     int lastDone = getMax(disk) + 1;
     int length;
@@ -72,11 +65,11 @@ void fix(vector<int> &disk)
 }
 int main()
 {
-    ifstream file("input.txt");
+    std::ifstream file("input.txt");
     char c;
     bool block = true;
     int id = 0;
-    vector<int> disk;
+    std::vector<int> disk;
     while (file.get(c))
     {
         int num = c - '0';
@@ -90,7 +83,6 @@ int main()
             {
                 disk.push_back(-1);
             }
-            cout << disk.back() << ' ';
         }
         if (block)
         {
@@ -98,7 +90,6 @@ int main()
         }
         block = !block;
     }
-    cout << '\n';
     fix(disk);
     long long sum = 0;
     for (int i = 0; i < disk.size(); i++)
@@ -109,6 +100,6 @@ int main()
         }
         sum += disk[i] * i;
     }
-    cout << sum << '\n';
+    std::cout << sum << '\n';
     return 0;
 }

@@ -2,29 +2,12 @@
 #include <iostream>
 #include <vector>
 
-using std::cout;
-using std::ifstream;
-using std::pair;
-using std::vector;
-
 #define UP 0
 #define RIGHT 1
 #define DOWN 2
 #define LEFT 3
 
-void print(vector<vector<char>> &mat)
-{
-    for (int i = 0; i < mat.size(); i++)
-    {
-        for (int j = 0; j < mat[i].size(); j++)
-        {
-            cout << mat[i][j] << ' ';
-        }
-        cout << '\n';
-    }
-}
-
-void findStartingPoint(vector<vector<char>> &mat, int &x, int &y)
+void findStartingPoint(std::vector<std::vector<char>> &mat, int &x, int &y)
 {
     for (int i = 0; i < mat.size(); i++)
     {
@@ -40,7 +23,7 @@ void findStartingPoint(vector<vector<char>> &mat, int &x, int &y)
     }
 }
 
-pair<int, int> getNext(vector<vector<char>> &mat, int dir, int posX, int posY)
+std::pair<int, int> getNext(std::vector<std::vector<char>> &mat, int dir, int posX, int posY)
 {
     switch (dir)
     {
@@ -56,7 +39,7 @@ pair<int, int> getNext(vector<vector<char>> &mat, int dir, int posX, int posY)
     return {-1, -1};
 }
 
-void simulate(vector<vector<char>> &mat, int posX, int posY)
+void simulate(std::vector<std::vector<char>> &mat, int posX, int posY)
 {
     int dir = UP;
 
@@ -77,7 +60,7 @@ void simulate(vector<vector<char>> &mat, int posX, int posY)
     }
 }
 
-int countPos(vector<vector<char>> &mat)
+int countPos(std::vector<std::vector<char>> &mat)
 {
     int x, y;
     findStartingPoint(mat, x, y);
@@ -92,14 +75,13 @@ int countPos(vector<vector<char>> &mat)
                 ret++;
         }
     }
-    // print(mat);
     return ret;
 }
 
 int main()
 {
-    ifstream file("input.txt");
-    vector<vector<char>> mat(0, vector<char>(0));
+    std::ifstream file("input.txt");
+    std::vector<std::vector<char>> mat(0, std::vector<char>(0));
     char c;
     int index = 0;
     while (file.get(c))
@@ -115,6 +97,6 @@ int main()
         }
         mat[index].push_back(c);
     }
-    cout << countPos(mat) << '\n';
+    std::cout << countPos(mat) << '\n';
     return 0;
 }

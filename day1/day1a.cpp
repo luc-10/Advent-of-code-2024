@@ -3,11 +3,7 @@
 #include <fstream>
 #include <algorithm>
 
-using std::cout;
-using std::ifstream;
-using std::vector;
-
-void findDist(vector<int> &l1, vector<int> &l2)
+void findDist(std::vector<int> &l1, std::vector<int> &l2)
 {
 
     sort(l1.begin(), l1.end());
@@ -17,14 +13,14 @@ void findDist(vector<int> &l1, vector<int> &l2)
     {
         dist += abs(l1[i] - l2[i]);
     }
-    cout << dist << '\n';
+    std::cout << dist << '\n';
 }
 
 int main()
 {
-    ifstream file("input.txt");
+    std::ifstream file("input.txt");
 
-    vector<int> l1, l2;
+    std::vector<int> l1, l2;
     int n1, n2;
     while (file >> n1 >> n2)
     {

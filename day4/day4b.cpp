@@ -2,17 +2,13 @@
 #include <vector>
 #include <fstream>
 
-using std::cout;
-using std::ifstream;
-using std::vector;
-
-bool checkMAS(vector<vector<char>> &mat, int i, int j)
+bool checkMAS(std::vector<std::vector<char>> &mat, int i, int j)
 {
     return ((mat[i - 1][j - 1] == mat[i + 1][j - 1] && mat[i + 1][j + 1] == mat[i - 1][j + 1] && ((mat[i - 1][j - 1] == 'M' && mat[i + 1][j + 1] == 'S') || (mat[i - 1][j - 1] == 'S' && mat[i + 1][j + 1] == 'M'))) ||
             (mat[i - 1][j - 1] == mat[i - 1][j + 1] && mat[i + 1][j + 1] == mat[i + 1][j - 1] && ((mat[i - 1][j - 1] == 'M' && mat[i + 1][j + 1] == 'S') || (mat[i - 1][j - 1] == 'S' && mat[i + 1][j + 1] == 'M'))));
 }
 
-int findMAS(vector<vector<char>> &mat)
+int findMAS(std::vector<std::vector<char>> &mat)
 {
     int ret = 0;
     for (int i = 1; i < mat.size() - 1; i++)
@@ -21,10 +17,8 @@ int findMAS(vector<vector<char>> &mat)
         {
             if (mat[i][j] == 'A')
             {
-                cout << "checking " << i << ' ' << j << '\n';
                 if (checkMAS(mat, i, j))
                 {
-                    cout << "found " << i << ' ' << j << '\n';
                     ret++;
                 }
             }
@@ -35,10 +29,10 @@ int findMAS(vector<vector<char>> &mat)
 
 int main()
 {
-    ifstream file("input.txt");
+    std::ifstream file("input.txt");
     char c;
     int index = 0;
-    vector<vector<char>> mat(0, vector<char>(0));
+    std::vector<std::vector<char>> mat(0, std::vector<char>(0));
     while (file.get(c))
     {
         if (c == '\n')
@@ -50,5 +44,5 @@ int main()
             mat.resize(index + 1);
         mat[index].push_back(c);
     }
-    cout << findMAS(mat) << '\n';
+    std::cout << findMAS(mat) << '\n';
 }
