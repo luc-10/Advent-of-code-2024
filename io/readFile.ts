@@ -5,6 +5,13 @@ export function readLine(path: string): string {
 }
 
 export function readNumbers(path: string): number[] {
-    const numbers = readLine(path).trim().split(/\s+/).map(Number);
-    return numbers;
+    return readLine(path).trim().split(/\s+/).map(Number);
+}
+
+export function readLines(path: string): string[] {
+    return readLine(path).trim().split('\n')
+}
+
+export function readNumberLines(path: string): number[][]{ 
+    return readLines(path).map(line => line.trim().split(/\s+/).map(Number));
 }
