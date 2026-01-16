@@ -19,10 +19,6 @@ export function day6Part1(){
 }
 
 export function day6Part2(){
-    // do part 1
-    // try to place a block on every position stepped
-    // if I go on a position more than 4 times I have for sure a loop
-    
     const data = readLines("inputFiles/day06.txt");
     const visited: boolean[][] = data.map(row => Array.from(row, _ => false));
     const startPos = findStartPos(data)
@@ -48,7 +44,6 @@ export function day6Part2(){
 function hasLoop(matrix: string[], visited: number[][], pos: number[], dir: number[]): boolean{
     let nextPos = [pos[0]+dir[0], pos[1]+dir[1]];
     while (nextPos[0]>=0 && nextPos[0]<matrix.length && nextPos[1]>=0 && nextPos[1]<matrix[nextPos[0]].length){
-        //console.log("Now on ", pos, "Dir is ", dir)
         visited[pos[0]][pos[1]]++;
         if (visited[pos[0]][pos[1]]>4){
             return true;
