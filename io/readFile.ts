@@ -15,3 +15,7 @@ export function readLines(path: string): string[] {
 export function readNumberLines(path: string): number[][]{ 
     return readLines(path).map(line => line.trim().split(/\s+/).map(Number));
 }
+
+export function readDigits(path :string): number[]{
+    return readLine(path).split('').map(Number)
+}
