@@ -19,3 +19,7 @@ export function readNumberLines(path: string): number[][]{
 export function readDigits(path :string): number[]{
     return readLine(path).split('').map(Number)
 }
+
+export function readDigitLines(path: string): number[][]{
+    return readLines(path).map(line => line.split('').map(Number))
+}
