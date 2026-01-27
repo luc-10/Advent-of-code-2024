@@ -68,7 +68,7 @@ export function day5Part2(){
                 const v = compressor.get(b);
 
                 if (u === undefined || v === undefined) {
-                    throw new Error("Chiave mancante in compressor");
+                    throw new Error("Error");
                 }
 
                 return graph[u].has(v) ? -1 : 1;
