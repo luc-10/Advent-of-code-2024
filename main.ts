@@ -50,6 +50,9 @@ import {
     day17,
     day17Part1,
     day17Part2,
+    day18,
+    day18Part1,
+    day18Part2,
 } from "./days";
 
 if (process.argv.length < 3) {
@@ -111,6 +114,9 @@ const stringToFuncMap: Record<string, () => void> = {
     day17,
     day17Part1,
     day17Part2,
+    day18,
+    day18Part1,
+    day18Part2,
 };
 
 const f = stringToFuncMap[day];
