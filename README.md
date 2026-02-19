@@ -1,4 +1,4 @@
-# [Advent of code 2025](https://adventofcode.com/2024) (TypeScript)
+# [Advent of code 2024](https://adventofcode.com/2024) (TypeScript)
 
 - `main.ts`: entry point
 - `io/`: utilities to read/print i/o files
